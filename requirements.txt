@@ -1,1 +1,20 @@
 # Specify Python package requirements for your project here (e.g., Mako==1.1.1). If your project doesn't require these, you can leave this file unchanged or delete it.
+unstructured[all-docs]
+langchain
+openai
+tiktoken
+fastapi
+uvicorn
+pymongo
+faiss-cpu
+fastapi
+uvicorn
+itsdangerous
+awswrangler
+html2text
+faiss-cpu
+pdf2image
+python-dotenv
+langchain-community
+docx2txt
+langchain_openai

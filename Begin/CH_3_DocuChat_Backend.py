@@ -5,21 +5,25 @@ import traceback
 
 # Import os and sys for system-related operations
 import os, sys
-import traceback  # Import traceback for error handling
+import traceback  
+
+# Import traceback for error handling
 from fastapi import (
     FastAPI,
     UploadFile,
     status,
-    HTTPException,
-)  # Import FastAPI components for building the web application
+    HTTPException)  
+
+# Import FastAPI components for building the web application
 from fastapi.responses import JSONResponse  # Import JSONResponse for returning JSON responses
 from fastapi.middleware.cors import CORSMiddleware  # Import CORS middleware to handle Cross-Origin Resource Sharing
+
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
+
 # from langchain_community.document_loaders import S3FileLoader
 from langchain_community.document_loaders import Docx2txtLoader,PyPDFLoader
-
 
 from langchain_community.callbacks import get_openai_callback
 from langchain.chains import ConversationalRetrievalChain
@@ -52,6 +56,8 @@ if os.name == "nt":  # Windows
 # S3_PATH = os.environ.get("S3_PATH")  # AWS S3 pathi
 
 os.environ['OPENAI_API_KEY']=""
+#S3_KEY=""
+#S3_SECRET=""
 S3_KEY=""
 S3_SECRET=""
 S3_BUCKET=""
@@ -60,7 +66,7 @@ S3_PATH=""
 
 
 try:
-    MONGO_URL="Add your credentials"
+    MONGO_URL="mongodb+srv://msec990_db_user:01rOdM05w3U9BaBU@llm-practice.5ao67yh.mongodb.net/?retryWrites=true&w=majority&appName=llm-practice"
 
     # Connect to the MongoDB using the provided MONGO_URL
     client = pymongo.MongoClient(MONGO_URL, uuidRepresentation="standard")
@@ -79,8 +85,6 @@ except:
     fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
     # Print information about the exception type, filename, and line number
     print(exc_type, fname, exc_tb.tb_lineno)
-
-
 
 
 
@@ -177,6 +181,7 @@ def get_response(
         answer["total_tokens_used"] = cb.total_tokens
     gc.collect()  # collect garbage from memory
     return answer
+
 import uuid
 from typing import List
 
